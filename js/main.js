@@ -12,14 +12,17 @@ $(function () {
 
 //swiper-banner
 var swiperBanner = new Swiper('#bannerSwiper', {
+    slidesPerView: 1,
     pagination: {
         el: '.swiper-pagination',
+        clickable: true,
     },
     grabCursor: true,
 });
 
 //swiper comment
-var swiperComment = new Swiper('.swiper-container', {
+var menu = [1, 2, 3, 4, 5]
+var swiperComment = new Swiper('#sectionComment', {
     slidesPerView:1 ,
     spaceBetween: 30,
     freeMode: true,
@@ -33,10 +36,14 @@ var swiperComment = new Swiper('.swiper-container', {
     },
     loop: true,
     pagination: {
+        dynamicBullets: true,
         el: '.swiper-pagination',
         clickable: true,
-        type : 'custom',
-        bulletClass:'.swiper_pagination_img'
+        // type : 'custom',
+        // bulletClass:'swiper-pagination-img',
+        renderBullet: function (index, className) {
+            return '<img  src="images/swipericon'+(menu[index])+'.png" alt="" class="swiper-pagination-img ' + className+'">'
+        },
     },
     grabCursor: true,
 });
